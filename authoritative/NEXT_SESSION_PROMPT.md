@@ -19,7 +19,15 @@ Repository: `jball348-svg/ETTA`, default branch `main`. Read live default-branch
 
 1. Build a small explicit character-domain state: position, orientation, velocity, collision dimensions, grounded status, and action state. Prefer a physics-light deterministic implementation before any engine dependency explosion.
 2. Create an intentionally simple but recognisable Etta humanoid (head, torso, limbs, scale and facing direction). Appearance may be stylised; no new external assets required. Distinguish Etta visually from the origin marker.
-3. Provide manual keyboard locomotion and camera follow/orbit behavior; ensure smooth timestep-independent movement, no falling through ground, bounded travel and collisions against at least one simple obstacle.
+3. Provide **developer-controlled, playable third-person avatar movement** (not an animation demo). Default to **MANUAL / DEV MODE**: Etta does not decide or move autonomously in S002. Implement camera-relative locomotion, a follow/orbit camera, smooth timestep-independent movement, proper key-release/blur handling, no falling through ground, bounded travel and collisions against at least one simple obstacle.
+   - **W / A / S / D** and **arrow keys**: walk Etta around the arena relative to camera orientation, with visible facing/turning.
+   - **Hold Shift**: temporarily run faster, returning to walk speed when released.
+   - **Mouse drag**: orbit the third-person camera; **mouse wheel**: sensible bounded zoom. Character movement and camera orbit must be distinguishable.
+   - **R**: reset Etta's position, orientation, motion and camera to a known spawn state.
+   - **F1** (or an accessible on-screen toggle): show/hide the developer HUD. Keep an always-discoverable control legend in the UI.
+   - **Optional Space**: jump only if grounded jumping and landing can be implemented and tested correctly; don't add fake jumping.
+   - **Touch screens**: if feasible in the session, provide a simple on-screen directional pad/joystick and camera drag so the Vercel preview is explorable on phones; document clearly if touch controls are deferred.
+   - Input must not stick on key release, window blur, focus changes or mode changes; block browser scrolling for mapped arrows only while the game has appropriate focus.
 4. Add an unobtrusive on-screen state/debug readout showing actual coordinates, orientation, movement state and frame performance. Show keyboard instructions and a clear reset.
 5. Separate scene, simulation, input and UI modules; avoid an all-in-one file.
 6. Generate/commit npm lockfile and switch CI to `npm ci` once verified. Add unit tests for deterministic movement and boundaries, and an automated browser smoke test if executable.
@@ -28,7 +36,8 @@ Repository: `jball348-svg/ETTA`, default branch `main`. Read live default-branch
 ## Acceptance tests and gate
 
 - From a clean checkout, install reproducibly, `npm run check` succeeds, and Vite production build completes.
-- Etta is visible as a body; movements/turn/stop/reset are responsive in a real browser **if browser testing is available**.
+- Etta is visible as a body; **manual W/A/S/D or arrow movement, Shift running, mouse-orbit camera, wheel zoom, R reset and F1/on-screen developer HUD** work as documented in a real browser **if browser testing is available**. The initial mode is explicitly MANUAL / DEV: no autonomous control or model inference.
+- Test or explicitly report missing evidence for key-up, blur/focus safety, camera-relative direction, obstacle collision, run/walk speed changes, reset and camera bounds; document any deferred touch controls.
 - Character cannot cross a tested obstacle, never teleports between frames, does not depend on model inference, and is not confused with camera motion.
 - Clear error message instead of a crash if WebGL isn't available.
 - Document what is tested in CI, what is manually observed and what remains unverified.
