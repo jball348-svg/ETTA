@@ -122,6 +122,8 @@ try {
     assert.ok(width<=430,'Unexpected mobile horizontal overflow: '+width);
     const pad=phone.locator('[data-direction="forward"]');
     assert.equal(await pad.isVisible(),true,'Mobile pad hidden');
+    await pad.scrollIntoViewIfNeeded();
+    await sleep(350); // Headless SwiftShader renders slowly at mobile DPR; allow scene to resume.
     const before=position(await phone.locator('#telemetry').innerText());
     const bb=await pad.boundingBox();assert.ok(bb);
     await phone.evaluate(()=>{
@@ -133,7 +135,7 @@ try {
     const cdp=await mobile.newCDPSession(phone);
     const point={x:bb.x+bb.width/2,y:bb.y+bb.height/2,id:1};
     await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
-    await sleep(550);
+    await sleep(1700);
     await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
     await sleep(100);
     const after=position(await phone.locator('#telemetry').innerText());
