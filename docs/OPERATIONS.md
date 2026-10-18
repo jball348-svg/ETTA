@@ -3,14 +3,14 @@
 Requires Node 22.12+ and npm.
 
 ```sh
-npm install
+npm ci
 npm run check
 npm run dev
 ```
 
-After a generated lockfile is committed and verified, use `npm ci` for clean reproducible installation. `npm run check` includes TypeScript, Node regression tests and a Vite production build. A clean installer/hosted run must be checked before calling it CI_PASS.
+`package-lock.json` was generated in GitHub Actions from the S002 session branch (bot commit `c16c960b09c7d399f4ec37aa6cc7957a0b77cfd4`). CI is configured for reproducible `npm ci` installation. `npm run check` executes TypeScript checking, Node physics regression tests and Vite production build.
 
-Tap/click the 3D arena to focus. WASD/arrows move Etta relative to the orbit camera; Shift speeds up, wheel zooms, drag orbits, R resets, F1 toggles HUD. Touch-pad buttons on coarse-pointer devices move her without network requests. No model or autonomous decision loop exists.
+Click the 3D arena to focus. WASD/arrows move Etta relative to the orbit camera; Shift speeds up, wheel zooms, drag orbits, R resets, F1 toggles HUD. Touch-pad buttons on coarse-pointer devices move her without network requests. No model or autonomous decision loop exists.
 
 Vercel target: import GitHub repo as a Vite static site, command `npm run build`, output `dist`. Do not set client-side API keys. No live deployment is verified; an HTTP response alone does not certify WebGL controls. See `sessions/S002/VALIDATION.md`.
 

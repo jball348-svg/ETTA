@@ -1,21 +1,18 @@
 # S002 validation — evidence boundary
 
-## Authored static checks
-- `src/simulation.ts`: explicit radius/grounding, camera-relative desired velocity, bounded delta, axis-separated obstacle collision and reset.
-- `src/input.ts`: keyup, blur, visibilitychange, focusout, pointercancel and lostpointercapture clears. Direction pad supports simultaneous run holding.
-- `src/camera.ts`: orbit and bounded zoom independent of simulation state.
-- `src/scene.ts`: recognisable humanoid model, shared obstacle geometry and WebGL renderer error path.
-- `tests/simulation.test.mjs`: authored simulation cases for camera-relative direction, running, stopping, obstacle collision, bounds, reset, timestep.
-- GitHub commit/PR/workflow results are reported in the owner-facing closeout when actually observed; this file does not invent or predeclare any result.
+## VERIFIED hosted evidence
+- GitHub Actions push [39108879187](https://github.com/jball348-svg/ETTA/actions/runs/39108879187), source SHA `5c3b232d329be70dd7407c76f53c730cd24d4d8d`: **CI_PASS**. Job `check` reports completed/success: npm install, typecheck, Node tests and Vite build; bot lockfile push succeeded.
+- GitHub Actions PR [39108906760](https://github.com/jball348-svg/ETTA/actions/runs/39108906760), head SHA `c16c960b09c7d399f4ec37aa6cc7957a0b77cfd4`: **CI_PASS**. All substantive job steps successful. The branch includes tracked `package-lock.json` blob `e68ca2cb45aa1213c7bfbdf1285d5944df2d3a52`.
+- Source implementation `src/simulation.ts`: transform, grounded state, radius, camera-relative movement, 50ms delta cap, x/z collisions and reset; `tests/simulation.test.mjs` tests cardinal and diagonal input, sprint, release, bounds, obstacle, reset and timestep. Tests ran in the above hosted check.
+- CI is subsequently changed from `npm install` to `npm ci`; the **final head requires its own run** before calling that change verified.
 
-## Execution evidence
-- `npm run check`: **NOT_RUN LOCALLY** — network-disabled execution environment has no cached npm packages. Do not infer a pass.
-- Local Chromium rendered walkthrough: **NOT_RUN** — the Vite build/dependencies are not available in the local runtime; mere presence of Chromium is not a completed browser smoke.
-- Vercel deployment and remote phone walkthrough: **NOT_VERIFIED**.
-- Hosted CI: outcome must be read from exact GitHub Actions run after branch/PR creation; do not preclaim it here.
-- Lockfile: requested generated-on-branch by CI; only count as committed after GitHub actually confirms the file.
+## Evidence absent
+- Local `npm run check`: **NOT_RUN** in tool's network-disabled container with no cached npm packages. Hosted CI provides independent execution, not a local result.
+- Real WebGL screenshot, interactive keyboard/camera/obstacle walkthrough: **NOT_RUN**. A green Vite build is not proof of visible interaction. Browser screenshot and touch-emulation evidence remain S003's target.
+- Vercel deployment and actual mobile hardware: **NOT_VERIFIED**.
+- No LLM integration, inference or autonomous behavior exists, by design.
 
-## Manual browser reproduction to complete in S003
-Run app, focus the canvas, drive W/A/S/D and arrows, sprint with Shift, orbit while stationary, zoom limits, collide with the left obstacle and arena wall, release controls, blur browser, R reset, F1 HUD, touch buttons and rotate on touch. Compare visible coordinates and HUD.
+## S003 browser reproduction plan
+Serve Vite and visibly demonstrate Etta; focus canvas, walk via WASD/arrows, change running with Shift/release, orbit stationary, zoom bounds, collide into obstacles and arena walls, stop after focus loss, reset with R, toggle HUD with F1, use touch pad and touch orbit. Compare screen position with live coordinates.
 
-**P1 remains IMPLEMENTED_PENDING_BROWSER_EVIDENCE, not PASS.**
+**P1 = IMPLEMENTED_PENDING_BROWSER_EVIDENCE, never PASS from these checks alone.**

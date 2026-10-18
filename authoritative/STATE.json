@@ -15,14 +15,15 @@
     "P5": { "title": "Who knows after that", "status": "UNDEFINED_OWNER_DIRECTED" }
   },
   "current_capabilities": [
-    "Static Vite/Three.js browser client",
-    "Deterministic grounded humanoid body simulation with bounds and obstacle colliders",
-    "Manual keyboard walking/running, touch direction pad, camera orbit and zoom, reset and developer HUD",
-    "Governed numbered sessions and source-level regression tests"
+    "Static Vite/Three.js client with hosted build evidence",
+    "Deterministic grounded humanoid body with arena and obstacle colliders",
+    "Manual walking/running, touch direction pad, orbit/zoom camera, reset, developer HUD",
+    "Generated npm lockfile and configured reproducible npm ci pipeline",
+    "Source-level deterministic regression tests and governed sessions"
   ],
   "not_yet_capabilities": [
-    "Browser-observed body movement and collision evidence",
-    "Verified live Vercel deployment",
+    "Real browser observed controls/collision proof",
+    "Verified deployed Vercel preview",
     "Home or interactive objects",
     "Cloud LLM connection",
     "Autonomous decisions",
@@ -30,8 +31,14 @@
   ],
   "deployment": { "target": "Vercel", "status": "NOT_DEPLOYED_VERIFIED", "backend": "NOT_IMPLEMENTED" },
   "source_reference": { "legacy": "jball348-svg/aStar", "imported_code": false },
+  "evidence": {
+    "initial_push_ci_pass": "https://github.com/jball348-svg/ETTA/actions/runs/39108879187",
+    "lockfile_pr_ci_pass": "https://github.com/jball348-svg/ETTA/actions/runs/39108906760",
+    "real_browser": "NOT_RUN",
+    "vercel": "NOT_VERIFIED"
+  },
   "known_blockers": [
-    "Real browser manual acceptance and Vercel smoke are pending",
-    "Lockfile and exact CI outcome to be recorded from hosted evidence; do not infer success from source"
+    "Real interactive browser and Vercel smoke tests outstanding",
+    "Final npm ci CI run must be checked before merge"
   ]
 }

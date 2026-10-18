@@ -1,56 +1,33 @@
 # ETTA — Capability roadmap
 
-This roadmap expresses **outcomes** rather than a fixed feature backlog. Phases have evidence gates and may span multiple numbered sessions. No phase is marked delivered merely because its code is present.
+Progression: **Give her a body → Give her a home → Put her mind in her body → Let her decide how she lives.** No phase passes without observational evidence.
 
-| Phase | Objective | Observable gate | Initial status |
+| Phase | Objective | Acceptance gate | S002 status |
 |---|---|---|---|
-| **P0 — Foundation** | Session protocol, build, empty browser scene, deployable structure | Reproducible check + browser smoke + honest hosted check | IN_PROGRESS |
-| **P1 — BODY** | **Give Etta a body** | A distinct visible 3D Etta with size, position, orientation, movement, collision and stable camera; manual actions replay correctly | NOT_STARTED |
-| **P2 — HOME** | **Give her a home** | Navigable coherent home with bounded rooms, doors, furniture, objects, affordances and stateful interactions; reproducible world snapshots | NOT_STARTED |
-| **P3 — MIND** | **Put her mind in her body** | Server-side cloud model reads constrained perception and chooses valid actions; schema validation, timeouts, fallback and quota protections proven | NOT_STARTED |
-| **P4 — LIFE** | **Let her decide how she lives** | Sustained autonomous decision loop with drives, simulated moods, memory, routines, social interactions when available, and traceable consequences | NOT_STARTED |
-| **P5 — OPEN HORIZON** | **Who knows after that** | Future scope selected by owner after observing the experiment | UNDEFINED |
+| P0 — Foundation | Clean browser scaffold, build and protocol | Lockfile, hosted build, browser smoke and Vercel smoke separately reported | IMPLEMENTED; BROWSER/DEPLOY PENDING |
+| P1 — BODY | Distinct 3D Etta under manual control | Visible body, testable transform/velocity/collision, WASD/arrows, sprint, orbit, reset and HUD; browser walkthrough | IMPLEMENTED; BROWSER PROOF PENDING |
+| P2 — HOME | Navigable coherent dwelling | Traversable rooms, objects, interaction state and reproducible snapshots | NOT_STARTED |
+| P3 — MIND | Model selects legal actions through secure backend | Structured perception, validated actions, timeouts, quotas and genuine decision traces | NOT_STARTED |
+| P4 — LIFE | Sustained simulated autonomy | Reproducible bounded decision loop, persistence plan, manual overrides and soak evidence | NOT_STARTED |
+| P5 — OPEN HORIZON | Future directions selected by owner | Owner-defined | UNDEFINED |
 
-## Capability gates
+## P1 BODY status
 
-### P0 — Foundation
-- Build from a fresh checkout.
-- Static scene renders or degrades visibly if WebGL is unavailable.
-- Session protocol, authoritative state and next prompt are consistent.
-- Browser smoke test and Vercel smoke test are **not automatically implied** by CI.
-- Secrets never reach browser bundles.
+S002 provides world-owned body state, collision bounds, two static obstacles, visible Three.js humanoid, manual keyboard/touch input, orbit/follow camera, bounded zoom, reset, HUD and source-level deterministic regression tests. It is **not** a verified interactive browser gate: green CI builds prove source checks, not visual movement in WebGL. S003 is dedicated to running and fixing the observed walkthrough.
 
-### P1 — Give Etta a body
-- Body has explicit transform, size and collision volume; distinguish visual body from physics state.
-- Keyboard/manual walk + turn + stop work without network or LLM.
-- Camera, ground contact and simple collisions are testable; debug overlay reports real state.
-- Character remains consistently recognisable through motion.
-- Evidence: automated logic checks and a rendered browser walkthrough.
+## Subsequent gates
 
-### P2 — Give her a home
-- One small, pleasant and well-defined dwelling before a larger world.
-- Traversable surfaces and doors/objects have authoritative state.
-- Affordance list derives from geometry and proximity; no imaginary object interactions.
-- Evidence: deterministic routes, collision tests, object interaction and reset/replay.
+### P2 HOME
+One small dwelling before expanding; geometry owns traversable surfaces, doors and object affordances. Deterministic routes, collisions, interactions and reset/replay.
 
-### P3 — Put her mind in her body
-- Backend-only model key; provider adapter and environment configuration.
-- LLM sees a concise, structured perception packet and legal actions.
-- Strictly parse/validate JSON, reject invented action IDs and implement explicit timeouts/retries/backoff.
-- Show decision origin and fallback; bound costs, rate limits and calls.
-- Test model disconnect, malformed output and blocked/quota responses.
+### P3 MIND
+Backend-only API credentials, initially evaluate Google-hosted Gemma; authenticated quota-bound adapter, strict JSON validation, legal action IDs, retries/timeouts/backoff and provenance of model/rules/manual. No provider secrets in frontend.
 
-### P4 — Let her decide how she lives
-- World persists consistently through choices; needs/drives/moods are simulated data, not claims of feelings.
-- Character selects goals and actions autonomously, without repetitive loops or runaway token consumption.
-- Save/restore or server persistence is selected explicitly; distinguish browser-only life from a 24/7 world.
-- Manual override and safe shutdown always remain possible.
-- Evidence: long deterministic soak, real inference trace, regression suite and failure report.
+### P4 LIFE
+Character simulated drives and moods, memory, choices, routines and consequence tracking without claiming consciousness. Bounded tokens and time, pause and shutdown. A static Vercel site is not automatically a 24/7 agent worker.
 
 ## Later possibilities (not authorised work)
+Voice, richer characters, relationships, a larger world and persistent independent runtime. None are delivered or promised.
 
-Speech and listening, more characters, friendships, richer worlds, time acceleration, agent-generated projects, distributed observation and persistent server worlds. Do **not** treat possibilities as next-session commitments.
-
-## Sequencing rule
-
-A session may refactor or add supporting infrastructure, but it must say which gate it advances and what remains incomplete. Proceed body → home → mind → autonomy unless owner changes the direction.
+## Session rule
+One numbered session at a time, archive real evidence, keep exact source of truth and install a complete next prompt marked FUTURE / NOT EXECUTED.
