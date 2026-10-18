@@ -22,6 +22,10 @@ Click the stage: **WASD/arrows** walk; hold **Shift** to run; **drag** orbits, *
 
 No API key is needed. There is no home, inference adapter, autonomous mind, long-term memory or continuous worker yet.
 
+### Deploy Etta to Vercel
+
+The **current BODY-only web app** can be deployed from the repository's `main` branch. `vercel.json` configures Vite, a locked `npm ci` install, the production build and the `dist` output. **No environment variables or Google API key are required for this stage.** Follow the [Vercel deployment handoff and live smoke checks](docs/VERCEL_DEPLOYMENT.md). Deployment has not been performed or verified by this repository.
+
 ## Project authority
 
-See [charter](PROJECT_CHARTER.md), [roadmap](ROADMAP.md), [governance](AGENTS.md), [state](authoritative/STATE.json), [phase gates](docs/PHASE_GATES.md), [browser acceptance evidence](sessions/S003/VALIDATION.md) and [S004 next prompt](authoritative/NEXT_SESSION_PROMPT.md). Static Vercel deployment remains a target, not a certified live instance.
+See [charter](PROJECT_CHARTER.md), [roadmap](ROADMAP.md), [governance](AGENTS.md), [state](authoritative/STATE.json), [phase gates](docs/PHASE_GATES.md), [browser acceptance evidence](sessions/S003/VALIDATION.md) and [S004 next prompt](authoritative/NEXT_SESSION_PROMPT.md). Vercel deployment is configured and documented but remains unverified until the owner deploys and checks the actual URL.
