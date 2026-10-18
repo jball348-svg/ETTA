@@ -124,6 +124,12 @@ try {
     assert.equal(await pad.isVisible(),true,'Mobile pad hidden');
     const before=position(await phone.locator('#telemetry').innerText());
     const bb=await pad.boundingBox();assert.ok(bb);
+    await phone.evaluate(()=>{
+      window.__ettaTouchTrace=[];
+      for(const type of ['pointerdown','pointerup','pointercancel','touchstart','touchend','blur','focusout'])
+        window.addEventListener(type,e=>window.__ettaTouchTrace.push({type,target:e.target?.getAttribute?.('data-direction')||e.target?.id||e.target?.tagName}),true);
+    });
+    console.log('MOBILE pad',JSON.stringify(bb),'hit',await phone.evaluate(([x,y])=>document.elementFromPoint(x,y)?.outerHTML?.slice(0,140),[bb.x+bb.width/2,bb.y+bb.height/2]));
     const cdp=await mobile.newCDPSession(phone);
     const point={x:bb.x+bb.width/2,y:bb.y+bb.height/2,id:1};
     await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
@@ -131,7 +137,7 @@ try {
     await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
     await sleep(100);
     const after=position(await phone.locator('#telemetry').innerText());
-    assert.ok(distance(before,after)>0.35,'Touch forward button did not move body');
+    assert.ok(distance(before,after)>0.35,'Touch forward did not move body: '+JSON.stringify({before,after,trace:await phone.evaluate(()=>window.__ettaTouchTrace),telemetry:await phone.locator('#telemetry').innerText()}));
   });
   await attempt('Screenshot captures mobile layout',async()=>{
     const bytes=await phone.screenshot({path:'test-results/etta-mobile.png'});
