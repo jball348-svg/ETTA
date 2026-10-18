@@ -1,18 +1,16 @@
 # ETTA phase-gate ledger
 
-Status is evidence-bound. A completed PR is not the same as a verified product outcome.
-
-| Phase | Status at authored S001 | Evidence | Outstanding |
+| Phase | S002 status | Evidence | Outstanding |
 |---|---|---|---|
-| P0 Foundation | IMPLEMENTED; VERIFICATION PENDING | Source scaffold, contracts, tests, CI workflow defined in S001 | Run local check, hosted CI, real browser and Vercel smoke |
-| P1 Body | NOT_STARTED | — | Visible independent body and movement acceptance |
-| P2 Home | NOT_STARTED | — | Spatial world, objects and affordances |
-| P3 Mind | NOT_STARTED | — | Provider adapter + constrained model actions |
-| P4 Life | NOT_STARTED | — | Measured autonomous run + persistence decision |
-| P5 Open | UNDEFINED | — | Owner-led discovery after P4 |
+| P0 Foundation | IMPLEMENTED; browser smoke pending | Bootstrap source + authored CI and build commands | Independent browser/Vercel smoke |
+| P1 Body | IMPLEMENTED, NOT GATE-PASSED | Body, keyboard/touch, camera, obstacles and deterministic tests committed in S002 | Actual browser controls, visual/a11y, hosted verdict, reliable install |
+| P2 Home | NOT_STARTED | — | Navigable dwelling and world objects |
+| P3 Mind | NOT_STARTED | — | Server adapter and valid model actions |
+| P4 Life | NOT_STARTED | — | Safe controlled autonomy, persistence |
+| P5 Open | UNDEFINED | — | Owner direction |
 
-**Do not upgrade these statuses from expectation alone.** Next sessions must reference exact run URLs/logs or direct observation before marking PASS.
+Never upgrade phase evidence from code review or `tsc` alone. Hosted CI result requires real run URL / SHA; a local Chromium walkthrough requires observed results.
 
-## Session history
-
-- **S001 — Bootstrap:** created governance and starter web project; records under `sessions/S001`. Hosted and visual verification must be independently established.
+## History
+- **S001 — Foundation:** created empty scene and governance.
+- **S002 — Body:** implemented a distinctive Etta figure in a collision-bounded manual test arena; added camera orbit, WASD/arrows, sprint, touch pad and deterministic regression suite. Browser acceptance still outstanding, so P1 stays open.

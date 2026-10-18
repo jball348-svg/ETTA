@@ -1,62 +1,37 @@
 {
   "project": "ETTA",
-  "as_of": "2026-10-17",
+  "as_of": "2026-10-18",
   "mission": "Build an embodied autonomous virtual character using staged, verifiable software sessions.",
-  "last_completed_session": "S001",
-  "next_session": "S002",
+  "last_completed_session": "S002",
+  "next_session": "S003",
   "next_session_status": "INSTALLED_FUTURE_NOT_EXECUTED",
-  "current_phase": "P0",
+  "current_phase": "P1",
   "phases": {
-    "P0": {
-      "title": "Foundation",
-      "status": "IMPLEMENTED_PENDING_HOSTED_AND_BROWSER_VERIFICATION"
-    },
-    "P1": {
-      "title": "Give Etta a body",
-      "status": "NOT_STARTED"
-    },
-    "P2": {
-      "title": "Give her a home",
-      "status": "NOT_STARTED"
-    },
-    "P3": {
-      "title": "Put her mind in her body",
-      "status": "NOT_STARTED"
-    },
-    "P4": {
-      "title": "Let her decide how she lives",
-      "status": "NOT_STARTED"
-    },
-    "P5": {
-      "title": "Who knows after that",
-      "status": "UNDEFINED_OWNER_DIRECTED"
-    }
+    "P0": { "title": "Foundation", "status": "IMPLEMENTED_BROWSER_SMOKE_PENDING" },
+    "P1": { "title": "Give Etta a body", "status": "IMPLEMENTED_PENDING_BROWSER_EVIDENCE" },
+    "P2": { "title": "Give her a home", "status": "NOT_STARTED" },
+    "P3": { "title": "Put her mind in her body", "status": "NOT_STARTED" },
+    "P4": { "title": "Let her decide how she lives", "status": "NOT_STARTED" },
+    "P5": { "title": "Who knows after that", "status": "UNDEFINED_OWNER_DIRECTED" }
   },
   "current_capabilities": [
-    "Static Vite + Three.js bootstrap scene",
-    "Governed numbered sessions",
-    "Production-build and protocol validation scripts"
+    "Static Vite/Three.js browser client",
+    "Deterministic grounded humanoid body simulation with bounds and obstacle colliders",
+    "Manual keyboard walking/running, touch direction pad, camera orbit and zoom, reset and developer HUD",
+    "Governed numbered sessions and source-level regression tests"
   ],
   "not_yet_capabilities": [
-    "Etta avatar/body",
-    "Home or interactive world",
+    "Browser-observed body movement and collision evidence",
+    "Verified live Vercel deployment",
+    "Home or interactive objects",
     "Cloud LLM connection",
     "Autonomous decisions",
-    "Persistent agent memory",
-    "Verified live Vercel deployment"
+    "Persistent agent memory"
   ],
-  "deployment": {
-    "target": "Vercel",
-    "status": "NOT_DEPLOYED",
-    "backend": "NOT_IMPLEMENTED"
-  },
-  "source_reference": {
-    "legacy": "jball348-svg/aStar",
-    "imported_code": false
-  },
+  "deployment": { "target": "Vercel", "status": "NOT_DEPLOYED_VERIFIED", "backend": "NOT_IMPLEMENTED" },
+  "source_reference": { "legacy": "jball348-svg/aStar", "imported_code": false },
   "known_blockers": [
-    "Real browser and Vercel smoke tests outstanding",
-    "Lockfile not yet committed; S002 must generate and commit package-lock.json with verified npm ci",
-    "No hosted CI verdict recorded in this authored S001 state"
+    "Real browser manual acceptance and Vercel smoke are pending",
+    "Lockfile and exact CI outcome to be recorded from hosted evidence; do not infer success from source"
   ]
 }

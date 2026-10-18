@@ -1,22 +1,32 @@
 name: ETTA checks
-
 on:
   push:
     branches: [main, 'session/**']
   pull_request:
     branches: [main]
   workflow_dispatch:
-
+permissions:
+  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install dependencies (lockfile is S002 objective)
+      - name: Resolve dependencies and create lockfile if missing
         run: npm install --no-audit --no-fund
-      - name: Typecheck, contract tests and production build
+      - name: Typecheck, physics tests and production build
         run: npm run check
+      - name: Commit generated lockfile to S002 branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/session/S002-body-dev-controls'
+        run: |
+          if ! git ls-files --error-unmatch package-lock.json >/dev/null 2>&1; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add package-lock.json
+            git commit -m "chore: lock ETTA npm dependency graph"
+            git push
+          fi
