@@ -2,10 +2,14 @@
 
 | ID | Session | Decision | Rationale | Revisit when |
 |---|---|---|---|---|
-| DEC-0001 | S001 | Start a clean ETTA repo; legacy aStar is reference-only | Avoid importing historic bugs and design debt before we can isolate them | Any proposed legacy source reuse |
-| DEC-0002 | S001 | Ship Vite + Three.js static browser scaffold, Vercel target | Small visual foundation with no deployed backend or running costs | P1 rendering acceptance |
-| DEC-0003 | S001 | Product phases are BODY → HOME → MIND → LIFE | Owner's explicit creative progression; evidence-gated | Owner changes priorities |
-| DEC-0004 | S001 | Google-hosted Gemma is a P3 adapter target, not a P0 dependency | Authenticated test exists, but free-tier quotas and security constrain production | P3 provider bench / provider rules |
-| DEC-0005 | S001 | Cloud API keys remain server-side, provider-neutral adapter | Public Vercel deployment must not expose secrets | P3 |
-| DEC-0006 | S001 | No 24/7 agent worker in P0 | Vercel frontend alone doesn't confer unattended persistence | P4 |
-| DEC-0007 | S001 | Numbered sessions with complete future prompt and honest validation | Adapt research process to software engineering | After P1 |
+| DEC-0001 | S001 | New ETTA repo, legacy aStar reference only | Avoid importing bugs | Proposed legacy reuse |
+| DEC-0002 | S001 | Vite + Three.js static frontend | Small Vercel-friendly foundation | Visual gate |
+| DEC-0003 | S001 | BODY → HOME → MIND → LIFE | Explicit owner sequencing | Owner direction |
+| DEC-0004 | S001 | Gemma is a future P3 backend adapter | Protect secrets and quotas | P3 |
+| DEC-0005 | S001 | Server-side provider credentials only | No public API key | P3 |
+| DEC-0006 | S001 | No 24/7 runtime in static site | Hosting limitations | P4 |
+| DEC-0007 | S001 | Session protocol and honest validation | Repeatability | P1 gate |
+| DEC-0008 | S002 | Deterministic flat-ground body without full physics engine | Test collisions and manual movement before complexity | P2 navigation |
+| DEC-0009 | S002 | Camera-relative keyboard/touch input separate from body state and rendering | User can manually inhabit avatar with no LLM | Autonomous input arbitration in P3 |
+| DEC-0010 | S002 | Keep P1 gate open until observed WebGL/browser walkthrough | TS/CI cannot prove rendered functionality | S003 |
+| DEC-0011 | S002 | Commit npm lockfile via branch CI if write permission allows | Local npm registry inaccessible in execution container | Lockfile verification |

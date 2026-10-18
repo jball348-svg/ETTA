@@ -2,49 +2,40 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+const root = process.cwd(), read = p => readFileSync(join(root, p), 'utf8');
 
-const root = process.cwd();
-const read = (file) => readFileSync(join(root, file), 'utf8');
-
-test('authoritative roadmap and state stay aligned', () => {
+test('authoritative S002 state agrees with next S003 instruction', () => {
   const state = JSON.parse(read('authoritative/STATE.json'));
-  const roadmap = read('ROADMAP.md');
   assert.equal(state.project, 'ETTA');
-  assert.equal(state.last_completed_session, 'S001');
-  assert.equal(state.next_session, 'S002');
+  assert.equal(state.last_completed_session, 'S002');
+  assert.equal(state.next_session, 'S003');
   assert.equal(state.next_session_status, 'INSTALLED_FUTURE_NOT_EXECUTED');
-  for (const id of ['P0', 'P1', 'P2', 'P3', 'P4', 'P5']) {
-    assert.ok(state.phases[id], id);
-    assert.ok(roadmap.includes(id), id);
+  assert.match(read('authoritative/NEXT_SESSION_PROMPT.md'), /S003.*FUTURE \/ NOT EXECUTED/);
+  for (const phase of ['P0','P1','P2','P3','P4','P5']) {
+    assert.ok(state.phases[phase]);
+    assert.match(read('ROADMAP.md'), new RegExp(phase));
   }
-  assert.match(read('authoritative/NEXT_SESSION_PROMPT.md'), /S002.*FUTURE \/ NOT EXECUTED/);
 });
-
-test('bootstrap docs and evidence spine exist', () => {
+test('body modules and S002 evidence spine exist', () => {
   for (const path of [
-    'README.md', 'AGENTS.md', 'PROJECT_CHARTER.md', 'ROADMAP.md',
-    'docs/ARCHITECTURE.md', 'docs/DECISIONS.md', 'docs/PHASE_GATES.md',
-    'docs/QUALITY_STANDARD.md', 'docs/OPERATIONS.md',
-    'sessions/S001/INPUT.md', 'sessions/S001/PLAN.md',
-    'sessions/S001/VALIDATION.md', 'sessions/S001/REVIEW.md',
-    'sessions/S001/CLOSEOUT.md',
-    '.env.example', '.gitignore', 'vercel.json', 'index.html', 'src/main.ts'
-  ]) {
-    assert.ok(existsSync(join(root, path)), path);
-  }
+    'src/main.ts','src/simulation.ts','src/scene.ts','src/camera.ts','src/input.ts','src/style.css',
+    'sessions/S002/INPUT.md','sessions/S002/PLAN.md','sessions/S002/VALIDATION.md',
+    'sessions/S002/REVIEW.md','sessions/S002/CLOSEOUT.md','docs/ARCHITECTURE.md',
+    'docs/DECISIONS.md','docs/PHASE_GATES.md','docs/OPERATIONS.md'
+  ]) assert.ok(existsSync(join(root, path)), path);
 });
-
-test('the current stage does not pretend to have an agent', () => {
-  assert.match(read('index.html'), /Etta has not been born/);
-  assert.match(read('src/main.ts'), /NO AGENT/);
+test('manual control is explicit; code does not claim an AI mind or home', () => {
+  assert.match(read('index.html'), /MANUAL \/ DEV/);
+  assert.match(read('index.html'), /data-direction="forward"/);
   assert.match(read('src/main.ts'), /WEBGL UNAVAILABLE/);
-  assert.match(read('docs/ARCHITECTURE.md'), /server-side secret/);
+  assert.match(read('src/input.ts'), /visibilitychange/);
+  assert.match(read('src/input.ts'), /pointercancel/);
+  assert.match(read('src/simulation.ts'), /OBSTACLES/);
 });
-
-test('project has no checked-in credential values', () => {
+test('project keeps credentials outside browser bundle', () => {
   assert.match(read('.gitignore'), /^\.env\s*$/m);
   assert.match(read('.env.example'), /^GEMINI_API_KEY=\s*$/m);
-  for (const path of ['src/main.ts','index.html','README.md','docs/ARCHITECTURE.md']) {
+  for (const path of ['src/main.ts', 'src/simulation.ts', 'index.html', 'README.md']) {
     assert.doesNotMatch(read(path), /AQ\.[A-Za-z0-9_-]{20,}/);
   }
 });

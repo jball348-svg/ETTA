@@ -1,45 +1,36 @@
 # ETTA
 
-**An embodied-agent experiment.** Build a body. Give her a home. Put a mind in her body. Let her decide how she lives. Then see what emerges.
+**An embodied-agent experiment.** Give her a body. Give her a home. Put her mind in her body. Let her decide how she lives.
 
-ETTA is a new project, inspired by the owner's earlier [aStar / Etta prototype](https://github.com/jball348-svg/aStar), but it is not an unreviewed copy of that prototype. This repository starts with a tested build surface, an explicit software-research protocol, and an intentionally empty 3D stage.
+## Current stage — S002 body implementation
 
-## Current status
+Etta now has an authored 3D humanoid model in a bounded test arena, a physics-light deterministic body state, keyboard and touch **MANUAL / DEV** controls, an orbit/follow camera, obstacle collisions and a live state HUD. **This is not an autonomous agent.**
 
-- **S001:** governance + executable browser scaffold (authored; hosted verification must be checked separately).
-- **Next:** [S002 — Give Etta a body](authoritative/NEXT_SESSION_PROMPT.md), **future / not executed**.
-- **Current visible experience:** an empty Three.js scene with a roadmap overlay. **No agent, mind, home or persistent simulation exists yet.**
-- **Deployment target:** Vercel, static Vite frontend. A production inference endpoint is a later milestone.
+**Important:** Passing hosted code checks does not prove a live browser experience. P1 remains pending actual browser interaction evidence; see `sessions/S002/VALIDATION.md` and `docs/PHASE_GATES.md`. S003 is installed, future and unexecuted.
 
-## Quick start
+### Try it
 
-Requires Node.js 22.12+ and npm.
+Node.js 22.12+ and npm:
 
 ```bash
-npm install
+npm ci
+npm run check
 npm run dev
 ```
 
-Then open the URL printed by Vite. Quality gate:
+Click the stage to focus. Use **WASD / arrow keys** to walk, **Shift** to run, **mouse drag** to orbit and **wheel** to zoom. **R** resets the body and camera; **F1** or the on-screen button toggles telemetry. On touch devices, use the directional pad and drag the scene to orbit. Keyboard input clears on blur/focus loss; all movement remains manual.
 
-```bash
-npm run check
-```
+No API key is needed; there is no runtime provider connection. The target is a static Vercel/Vite deployment; no Vercel URL is certified live until actually observed.
 
-`npm run check` performs TypeScript checking, repository-contract tests, and a production build. CI runs the same commands. Deployment uses the Vite preset on Vercel with output directory `dist`; no API or secret is required for this scaffold.
+## Protocol and roadmap
 
-## Where to start
+- [Binding protocol](AGENTS.md)
+- [Project charter](PROJECT_CHARTER.md)
+- [Roadmap](ROADMAP.md)
+- [Authoritative state](authoritative/STATE.json)
+- [S003 next prompt — future](authoritative/NEXT_SESSION_PROMPT.md)
+- [S002 evidence](sessions/S002/VALIDATION.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Quality gates](docs/PHASE_GATES.md)
 
-- [Project charter](PROJECT_CHARTER.md) — the experiment, its limits, and priorities.
-- [Roadmap](ROADMAP.md) — body → home → mind → autonomy; what success means at each gate.
-- [AGENTS.md](AGENTS.md) — binding instructions for any future ChatGPT/coding-agent session.
-- [authoritative/STATE.json](authoritative/STATE.json) — machine-readable current state.
-- [authoritative/NEXT_SESSION_PROMPT.md](authoritative/NEXT_SESSION_PROMPT.md) — the **complete next-session instruction**.
-- [sessions/S001](sessions/S001) — bootstrap evidence, decisions and closeout.
-- [Architecture](docs/ARCHITECTURE.md) · [Quality gates](docs/QUALITY_STANDARD.md) · [Deployment](docs/OPERATIONS.md).
-
-## Philosophy
-
-The game engine owns physical truth; a model may select from affordances and propose speech but does not invent successful actions. Simulated internal variables are a design technique, not evidence that software feels anything. Failure, fallback, simulated behavior and genuine model decisions must be distinguishable in logs.
-
-This project is exploratory. Later worlds, characters and experiments are possibilities, **not promises or automatically installed scope**.
+The world owns transforms, geometry and valid action consequences. Model decisions, simulated emotion and persistent life remain future experiments, not current capabilities.
