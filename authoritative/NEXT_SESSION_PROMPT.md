@@ -1,27 +1,26 @@
-# ETTA S003 — PROVE THE BODY IN A REAL BROWSER (FUTURE / NOT EXECUTED)
+# ETTA S004 — GIVE ETTA A HOME: FIRST INHABITABLE ROOM (FUTURE / NOT EXECUTED)
 
-**Complete, standalone next-session prompt. S003 is installed but NOT EXECUTED.**
-Repository: `jball348-svg/ETTA`, authoritative branch `main`. Invoking "run next session" with ETTA context authorises this single session.
+**Complete standalone next-session prompt.** This S004 instruction was installed at S003 closeout; **S004 IS FUTURE / NOT EXECUTED**. Owner saying "run next session" with ETTA in context authorises this **one** session only. Do not execute S005 during S004.
 
-## Entry
-1. Read live default-branch SHA, `AGENTS.md`, `PROJECT_CHARTER.md`, `ROADMAP.md`, `authoritative/STATE.json`, this full prompt, `docs/PHASE_GATES.md`, `docs/DECISIONS.md` and complete `sessions/S002` closeout/validation.
-2. Check current GitHub PR and CI status. Do not claim S002 verified without inspecting exact run, head SHA and browser evidence.
-3. Execute **S003 only**; no P2 construction, P3 inference or P4 autonomous loop unless owner explicitly changes direction.
+## Preflight
+Repository: `jball348-svg/ETTA`; authoritative default branch `main`. Read live main SHA and the full `AGENTS.md`, `PROJECT_CHARTER.md`, `ROADMAP.md`, `authoritative/STATE.json`, `docs/PHASE_GATES.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md`, `docs/OPERATIONS.md`, and S003 records and CI artifact/run links. Check open PRs and avoid branches diverged from current main.
 
-## Primary objective — close the P1 BODY evidence gate
-Make Etta's first avatar genuinely playable and reliable in a browser, not merely plausible from TypeScript.
+P1 BODY has automated Chromium verification; Vercel and physical mobile performance are separately unverified. The primary objective is **P2 HOME**. Keep manual controls, world-owned physics, diagnostic HUD and no model autonomy. **Do not implement P3 LLM or P4 life** in this session.
 
-### Required work
-- Run reproducible `npm ci` and `npm run check` on a clean checkout; ensure `package-lock.json` is tracked and CI uses `npm ci`. If S002's bot lockfile commit did not complete, repair via a safely auditable PR.
-- Start Vite or serve the production `dist` locally, and perform a **real browser walkthrough** using Playwright/Chromium or a similarly documented browser: show visible humanoid; W/A/S/D and arrows camera-relative movement; Shift sprint/release; mouse orbit separate from character; wheel zoom limits; R reset; F1/HUD; blur, keyup, focus, visibility, resize, and fallback. Record screenshots/video when practical.
-- Validate collision boundaries and at least one obstacle interactively; compare observed world coordinates against HUD and static colliders. Confirm no stuck input on mode switch, blur or lost pointer.
-- Test the smartphone touch pad and camera dragging, ideally via responsive device emulation plus a physical phone. Address UI overflow, accessibility, DPR and performance issues.
-- Improve regression tests where browser observation uncovers defects. Do not manufacture success or silently conceal frame rendering exceptions.
-- If deploy credentials are already available, smoke-test the real Vercel preview and URL. Do not create paid services or presume Vercel access.
-- Inspect changed files for client-bundled keys, unexpected network requests and unsafe dependencies.
+## Mission
+**Give Etta her first small, coherent and explorable home.** Replace the abstract test arena with one lovingly but modestly staged interior or tiny studio containing floor, walls, one door/opening and a few recognisable furnishings. She must be able to walk through it with developer controls and stop against solid furniture and walls. Avoid a sprawling town or empty decorative shell.
 
-### Evidence gate
-P1 may be marked `PASS` only after source tests/build AND observed browser movement, collision, reset, camera behaviour and input release are documented with exact reproducible steps and links/screenshots. If Vercel remains untested, leave deployment verification explicitly outstanding even if P1 local gate passes. Otherwise keep P1 IN_PROGRESS and pass the exact blockers to S004.
+## Required work
+1. Define a small authoritative world-state model for static architecture and furnishings: stable object IDs, bounds/footprints, labels, relevant properties and deterministic reset. Do not infer object truth from the render mesh.
+2. Add one coherent room and a clear entrance/threshold. Furnish with at least a bed, table, chair, lamp or equivalent simple assets. Use procedural meshes and tasteful styling; don't import heavyweight asset packs blindly. Make Etta visually readable.
+3. Make floor, walls and furniture consistent with movement physics; guarantee no walking through solids. Preserve camera-relative WASD/arrows, Shift, orbit/zoom, R, F1/HUD, blur safety and touch. Reset must restore room and body without teleporting through objects.
+4. Expose a **non-autonomous affordance inspector**: identify nearby objects from actual world distance, with explicit state and possible manual interaction hooks. If time permits, implement exactly one tested manual interaction (e.g. light on/off or chair sit) with reversible state and reset. Never claim simulated rules are model thoughts.
+5. Avoid falsely promising house persistence: a page reload may reset local state until a later explicit persistence design.
+6. Extend deterministic tests for room layout, legal spawn, collision, door passage, object bounds and replay/reset; add genuine browser smoke cases/screenshots for navigating in the furnished room on desktop. Retain existing S003 Chrome regression suite, updating its former arena-only assertions with evidence-backed home checks.
+7. Inspect performance on desktop and emulated mobile. Previously observed headless mobile SwiftShader ~6 FPS, not a measured real-phone rate. Limit excessive draw/shadow cost where it improves responsiveness without hiding problems.
+8. If actual Vercel preview credentials/URL already exist, visit and inspect; don't claim deployment from configuration alone and don't create paid infrastructure.
 
-### Artifacts and git
-Create `sessions/S003/{INPUT,PLAN,VALIDATION,REVIEW,CLOSEOUT}.md`; update `STATE.json`, roadmap/gate and decision ledgers. Install a **complete standalone S004 prompt marked FUTURE / NOT EXECUTED**, continuing P1 if needed or moving to P2 HOME only if P1 genuinely passed. Use one named branch, PR, inspect checks, merge if qualified, and independently reread main afterward. Close with explicit evidence classes, limitations and the **entire next-session prompt** for the owner.
+## Acceptance and closeout
+Pass a first P2 vertical-slice gate only when room/object state, rendered body, collision, door passage and any claimed interaction are verified in actual Chrome with screenshots and deterministic tests. If incomplete, keep P2 in progress and target S005 to the gap.
+
+Produce `sessions/S004/{INPUT,PLAN,VALIDATION,REVIEW,CLOSEOUT}.md`; update authority, roadmap, phase and decision ledgers; install the **entire standalone S005 FUTURE / NOT EXECUTED prompt**. Use one S004 branch, normal PR, hosted checks and merge only with evidence. Independently reread main after merge and include the complete S005 prompt in the owner closeout. No P3 model connection or P4 autonomous choices in S004.
