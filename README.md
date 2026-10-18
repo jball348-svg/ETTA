@@ -1,16 +1,16 @@
 # ETTA
 
-**An embodied-agent experiment.** Give her a body. Give her a home. Put her mind in her body. Let her decide how she lives.
+**An embodied-agent experiment.** Give Etta a body → a home → a mind → the ability to decide how she lives.
 
-## Current stage — S002 body implementation
+## Current stage — Body verified, home is next
 
-Etta now has an authored 3D humanoid model in a bounded test arena, a physics-light deterministic body state, keyboard and touch **MANUAL / DEV** controls, an orbit/follow camera, obstacle collisions and a live state HUD. **This is not an autonomous agent.**
+Etta now has a 3D humanoid, world-owned deterministic body state, a test arena with obstacle collision, a follow/orbit camera, developer WASD/arrows/Shift controls, reset and telemetry, plus touch D-pad support. **All movement is MANUAL / DEV, not autonomous.**
 
-**Important:** Passing hosted code checks does not prove a live browser experience. P1 remains pending actual browser interaction evidence; see `sessions/S002/VALIDATION.md` and `docs/PHASE_GATES.md`. S003 is installed, future and unexecuted.
+**S003 Chromium acceptance has passed:** [hosted browser run 39110275970](https://github.com/jball348-svg/ETTA/actions/runs/39110275970) ran 15 real-browser checks (desktop and emulated touch), passed 15/15, and archived screenshots and evidence JSON. No physical phone or live Vercel site was verified. S004 HOME is [installed for the next separate invocation](authoritative/NEXT_SESSION_PROMPT.md); it has not been executed.
 
-### Try it
+### Try Etta locally
 
-Node.js 22.12+ and npm:
+Node 22.12+ and npm:
 
 ```bash
 npm ci
@@ -18,19 +18,10 @@ npm run check
 npm run dev
 ```
 
-Click the stage to focus. Use **WASD / arrow keys** to walk, **Shift** to run, **mouse drag** to orbit and **wheel** to zoom. **R** resets the body and camera; **F1** or the on-screen button toggles telemetry. On touch devices, use the directional pad and drag the scene to orbit. Keyboard input clears on blur/focus loss; all movement remains manual.
+Click the stage: **WASD/arrows** walk; hold **Shift** to run; **drag** orbits, **wheel** zooms, **R** resets, **F1** or HUD button toggles telemetry. On mobile scroll down to the arena and use its touch direction pad.
 
-No API key is needed; there is no runtime provider connection. The target is a static Vercel/Vite deployment; no Vercel URL is certified live until actually observed.
+No API key is needed. There is no home, inference adapter, autonomous mind, long-term memory or continuous worker yet.
 
-## Protocol and roadmap
+## Project authority
 
-- [Binding protocol](AGENTS.md)
-- [Project charter](PROJECT_CHARTER.md)
-- [Roadmap](ROADMAP.md)
-- [Authoritative state](authoritative/STATE.json)
-- [S003 next prompt — future](authoritative/NEXT_SESSION_PROMPT.md)
-- [S002 evidence](sessions/S002/VALIDATION.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Quality gates](docs/PHASE_GATES.md)
-
-The world owns transforms, geometry and valid action consequences. Model decisions, simulated emotion and persistent life remain future experiments, not current capabilities.
+See [charter](PROJECT_CHARTER.md), [roadmap](ROADMAP.md), [governance](AGENTS.md), [state](authoritative/STATE.json), [phase gates](docs/PHASE_GATES.md), [browser acceptance evidence](sessions/S003/VALIDATION.md) and [S004 next prompt](authoritative/NEXT_SESSION_PROMPT.md). Static Vercel deployment remains a target, not a certified live instance.

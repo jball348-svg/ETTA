@@ -4,13 +4,13 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 const root = process.cwd(), read = p => readFileSync(join(root, p), 'utf8');
 
-test('authoritative S002 state agrees with next S003 instruction', () => {
+test('authoritative S003 state agrees with next S004 instruction', () => {
   const state = JSON.parse(read('authoritative/STATE.json'));
   assert.equal(state.project, 'ETTA');
-  assert.equal(state.last_completed_session, 'S002');
-  assert.equal(state.next_session, 'S003');
+  assert.equal(state.last_completed_session, 'S003');
+  assert.equal(state.next_session, 'S004');
   assert.equal(state.next_session_status, 'INSTALLED_FUTURE_NOT_EXECUTED');
-  assert.match(read('authoritative/NEXT_SESSION_PROMPT.md'), /S003.*FUTURE \/ NOT EXECUTED/);
+  assert.match(read('authoritative/NEXT_SESSION_PROMPT.md'), /S004.*FUTURE \/ NOT EXECUTED/);
   for (const phase of ['P0','P1','P2','P3','P4','P5']) {
     assert.ok(state.phases[phase]);
     assert.match(read('ROADMAP.md'), new RegExp(phase));
@@ -20,7 +20,9 @@ test('body modules and S002 evidence spine exist', () => {
   for (const path of [
     'src/main.ts','src/simulation.ts','src/scene.ts','src/camera.ts','src/input.ts','src/style.css',
     'sessions/S002/INPUT.md','sessions/S002/PLAN.md','sessions/S002/VALIDATION.md',
-    'sessions/S002/REVIEW.md','sessions/S002/CLOSEOUT.md','docs/ARCHITECTURE.md',
+    'sessions/S002/REVIEW.md','sessions/S002/CLOSEOUT.md',
+    'sessions/S003/INPUT.md','sessions/S003/PLAN.md','sessions/S003/VALIDATION.md',
+    'sessions/S003/REVIEW.md','sessions/S003/CLOSEOUT.md','tests/browser-smoke.mjs','docs/ARCHITECTURE.md',
     'docs/DECISIONS.md','docs/PHASE_GATES.md','docs/OPERATIONS.md'
   ]) assert.ok(existsSync(join(root, path)), path);
 });

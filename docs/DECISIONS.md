@@ -13,3 +13,7 @@
 | DEC-0009 | S002 | Camera-relative keyboard/touch input separate from body state and rendering | User can manually inhabit avatar with no LLM | Autonomous input arbitration in P3 |
 | DEC-0010 | S002 | Keep P1 gate open until observed WebGL/browser walkthrough | TS/CI cannot prove rendered functionality | S003 |
 | DEC-0011 | S002 | Commit npm lockfile via branch CI if write permission allows | Local npm registry inaccessible in execution container | Lockfile verification |
+| DEC-0012 | S003 | Real production-preview Chromium interaction tests required for P1 | Static build cannot prove input/display | Future visual regressions |
+| DEC-0013 | S003 | Retain touch holds when canvas loses focus, but clear keyboard holds | Pressing a D-pad button can blur the canvas; should not stop an active finger | Input system refactors |
+| DEC-0014 | S003 | Keep screenshots + JSON evidence from hosted Chrome; pin CI-only Playwright transport | Reproduce full-browser smoke with no key/provider dependency | CI maintenance |
+| DEC-0015 | S003 | Distinguish mobile touch emulation from physical-device performance and deployment | SwiftShader emulator had low FPS; neither physical phone nor live Vercel were tested | Real device/preview availability |

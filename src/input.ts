@@ -25,7 +25,12 @@ export class ManualControls {
     window.addEventListener('blur', () => this.clear(), { signal });
     document.addEventListener('visibilitychange', () => { if (document.hidden) this.clear(); }, { signal });
     mount.addEventListener('focusout', e => {
-      if (!mount.contains(e.relatedTarget as Node | null)) this.clear();
+      if (!mount.contains(e.relatedTarget as Node | null)) {
+        // Touch buttons are outside the canvas focus tree. Blur must release keyboard
+        // holds, but must NOT erase an actively held touch pointer on those buttons.
+        this.keys.clear();
+        this.dragging = null;
+      }
     }, { signal });
     mount.addEventListener('pointerdown', e => {
       if (e.target instanceof HTMLButtonElement) return;

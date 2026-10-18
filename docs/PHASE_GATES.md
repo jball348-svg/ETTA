@@ -1,16 +1,22 @@
 # ETTA phase-gate ledger
 
-| Phase | S002 status | Evidence | Outstanding |
+| Phase | S003 status | Evidence | Outstanding |
 |---|---|---|---|
-| P0 Foundation | IMPLEMENTED; browser smoke pending | Foundation build, CI and reproducible lockfile | Independent browser/Vercel smoke |
-| P1 Body | IMPLEMENTED, NOT GATE-PASSED | Body, camera, keyboard/touch, physics tests and obstacles; hosted CI on S002 PR | Actual browser controls, visual quality, touch acceptance |
-| P2 Home | NOT_STARTED | — | Navigable dwelling and world objects |
-| P3 Mind | NOT_STARTED | — | Server adapter and model actions |
-| P4 Life | NOT_STARTED | — | Safe controlled autonomy and persistence |
-| P5 Open | UNDEFINED | — | Owner direction |
+| P0 Foundation | CI + BROWSER PASS; deployment separate | Locked `npm ci`, TypeScript tests, Vite build and Chrome run | Live Vercel URL not verified |
+| **P1 BODY** | **PASS_CHROMIUM_AUTOMATED** | [S003 run 39110275970](https://github.com/jball348-svg/ETTA/actions/runs/39110275970), `70e202bcb16ff1ca52fa8112e137c3b0ec4a25e9`, 15/15 Chrome checks plus screenshot/JSON artifact | Physical mobile device and performance still unverified |
+| P2 HOME | NOT_STARTED | S004 complete future prompt installed | Spatial room, object truth, collisions, door/passage |
+| P3 MIND | NOT_STARTED | — | Secure model adapter and legal actions |
+| P4 LIFE | NOT_STARTED | — | Bounded autonomy, memory, runtime persistence |
+| P5 OPEN | UNDEFINED | — | Owner-directed later |
 
-Hosted evidence (S002): [initial push run 39108879187](https://github.com/jball348-svg/ETTA/actions/runs/39108879187) **CI_PASS** on `5c3b232d329be70dd7407c76f53c730cd24d4d8d`; [PR run 39108906760](https://github.com/jball348-svg/ETTA/actions/runs/39108906760) **CI_PASS** on `c16c960b09c7d399f4ec37aa6cc7957a0b77cfd4`. These are real source/build/test results, not browser observation. Any later npm-ci commit must have its own verdict before merge.
+## Evidence boundary
+
+S003's hosted Chrome automation drove **actual** keyboard, mouse and emulated touch events against a built Vite production preview. It verified WebGL canvas, body coordinates, movement/stop, run, camera orbit/zoom, reset, HUD, blur safety, obstacle/arena constraints, mobile D-pad after scrolling, fallback and runtime errors. **15 PASS, 0 FAIL**; screenshot evidence was archived in workflow artifact ID `12130221952` (desktop/mobile). This is stronger than static build evidence; it is not direct human inspection of the screenshot nor a physical mobile-device or Vercel visit.
+
+At software-rendered mobile DPR, emulation saw ~6 FPS. This measurement is *not* evidence of physical device FPS. Preserve as performance concern, not a hidden failure.
 
 ## History
-- **S001 — Foundation:** created empty scene and governance.
-- **S002 — Body:** implemented a distinct Etta figure in a bounded manual arena with camera orbit, WASD/arrows, sprint, touch pad and physics regression suite. P1 stays open pending real browser exercise.
+
+- S001 — bootstrap and CI, empty scene.
+- S002 — body and manual developer movement implemented; lockfile via hosted runner.
+- **S003 — actual browser proof**, touch focus handling fix, favicon cleanup, 15/15 hosted Chromium acceptance. **S004 FUTURE / NOT EXECUTED**.
