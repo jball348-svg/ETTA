@@ -1,19 +1,19 @@
 {
   "project": "ETTA",
-  "as_of": "2026-10-17",
+  "as_of": "2026-10-18",
   "mission": "Build an embodied autonomous virtual character using staged, verifiable software sessions.",
-  "last_completed_session": "S001",
-  "next_session": "S002",
+  "last_completed_session": "S002",
+  "next_session": "S003",
   "next_session_status": "INSTALLED_FUTURE_NOT_EXECUTED",
-  "current_phase": "P0",
+  "current_phase": "P1",
   "phases": {
     "P0": {
       "title": "Foundation",
-      "status": "IMPLEMENTED_PENDING_HOSTED_AND_BROWSER_VERIFICATION"
+      "status": "CI_PASS_BROWSER_AND_VERCEL_UNVERIFIED"
     },
     "P1": {
       "title": "Give Etta a body",
-      "status": "NOT_STARTED"
+      "status": "IMPLEMENTED_PENDING_BROWSER_EVIDENCE"
     },
     "P2": {
       "title": "Give her a home",
@@ -33,21 +33,23 @@
     }
   },
   "current_capabilities": [
-    "Static Vite + Three.js bootstrap scene",
-    "Governed numbered sessions",
-    "Production-build and protocol validation scripts"
+    "Three.js static client with procedural Etta 3D humanoid",
+    "Deterministic grounded body state, arena and obstacle collisions",
+    "Manual developer controls: keyboard movement, running, orbit, zoom, reset and HUD",
+    "Touch direction pad and camera drag (implementation; mobile browser unverified)",
+    "Numbered session protocol and deterministic body tests"
   ],
   "not_yet_capabilities": [
-    "Etta avatar/body",
-    "Home or interactive world",
+    "Verified real browser rendering and control walkthrough",
+    "Verified live Vercel deployment",
+    "Home and stateful interactive world",
     "Cloud LLM connection",
     "Autonomous decisions",
-    "Persistent agent memory",
-    "Verified live Vercel deployment"
+    "Persistent agent memory"
   ],
   "deployment": {
     "target": "Vercel",
-    "status": "NOT_DEPLOYED",
+    "status": "NOT_VERIFIED",
     "backend": "NOT_IMPLEMENTED"
   },
   "source_reference": {
@@ -55,8 +57,8 @@
     "imported_code": false
   },
   "known_blockers": [
-    "Real browser and Vercel smoke tests outstanding",
-    "Lockfile not yet committed; S002 must generate and commit package-lock.json with verified npm ci",
-    "No hosted CI verdict recorded in this authored S001 state"
+    "P1 rendered browser acceptance remains unverified",
+    "Mobile touch and deployed Vercel acceptance unverified",
+    "S002 hosted checks must be tied to exact head SHA"
   ]
 }

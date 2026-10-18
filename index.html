@@ -1,26 +1,27 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#07131b" />
-    <meta name="description" content="ETTA — a virtual character, built one verified capability at a time." />
-    <title>ETTA — The Beginning</title>
-  </head>
-  <body>
-    <div id="app">
-      <main class="shell">
-        <header class="brand"><span class="brand-symbol">◈</span><span>ETTA</span><span class="status">S001 · FOUNDATION</span></header>
-        <section class="hero" aria-labelledby="hero-title">
-          <div class="copy"><p class="eyebrow">AN EMBODIED AGENT EXPERIMENT</p><h1 id="hero-title">A world is<br /><em>waiting.</em></h1>
-          <p class="intro">First, a body. Then, a home. Then, a mind inside it. Then, the freedom to decide what comes next.</p>
-          <p class="notice">This is the empty stage. Etta has not been born into it yet.</p></div>
-          <div class="viewport-wrap"><div id="scene" aria-label="Empty 3D stage for future Etta" role="img"></div><div class="scene-caption"><span>STAGE // EMPTY</span><span id="render-status">Initializing renderer…</span></div></div>
-        </section>
-        <section class="milestones" aria-label="Project roadmap"><div><span>01</span> BODY</div><div><span>02</span> HOME</div><div><span>03</span> MIND</div><div><span>04</span> LIFE</div><div class="unknown"><span>05</span> ?</div></section>
-        <footer><a href="https://github.com/jball348-svg/ETTA" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a><span>Nothing has to exist before we can imagine it.</span></footer>
-      </main>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
-</html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07131b"><meta name="description" content="ETTA — an embodied virtual character experiment.">
+<title>ETTA — A Body</title></head><body><div id="app"><main class="shell">
+<header class="brand"><span class="brand-symbol">◈</span><span>ETTA</span><span class="status">S002 · BODY / DEV</span></header>
+<section class="hero" aria-labelledby="hero-title"><div class="copy">
+<p class="eyebrow">THE FIRST SPARK OF MOVEMENT</p><h1 id="hero-title">Meet<br><em>Etta.</em></h1>
+<p class="intro">A body in a small world. Take her for a walk before we give her a home, a mind, and choices of her own.</p>
+<p class="notice">Etta is entirely developer-controlled for now. No artificial intelligence is making her move.</p>
+<div class="controls-legend"><b>DEV CONTROLS</b>
+<p>Click the scene · W A S D / arrows to walk · hold Shift to run</p>
+<p>Drag to orbit · scroll to zoom · R to reset · F1 for diagnostics</p>
+<div class="actions"><button type="button" id="reset">↺ Reset Etta</button><button type="button" id="toggle-hud" aria-pressed="true">Diagnostics</button></div></div></div>
+<div class="viewport-wrap" id="viewport" tabindex="0" role="application" aria-label="Playable Etta test arena. Click to focus keyboard movement.">
+<div id="scene"></div>
+<div class="dev-hud" id="dev-hud" aria-live="off"><div class="hud-heading">ETTA // PHYSICAL STATE</div><pre id="body-state">Waiting for first frame…</pre></div>
+<div class="touch-controls" aria-label="Touch movement controls"><div class="touch-pad">
+<button type="button" class="up" data-control="up" aria-label="Move forward">▲</button>
+<button type="button" class="left" data-control="left" aria-label="Move left">◀</button>
+<button type="button" class="down" data-control="down" aria-label="Move backward">▼</button>
+<button type="button" class="right" data-control="right" aria-label="Move right">▶</button></div>
+<button type="button" class="touch-run" data-control="run">RUN</button></div>
+<div class="scene-caption"><span>BODY // TEST ARENA</span><span id="render-status">INITIALIZING…</span></div>
+</div></section>
+<section class="milestones" aria-label="Project roadmap"><div class="current"><span>01</span> BODY</div><div><span>02</span> HOME</div><div><span>03</span> MIND</div><div><span>04</span> LIFE</div><div class="unknown"><span>05</span> ?</div></section>
+<footer><a href="https://github.com/jball348-svg/ETTA" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a><span>She moves when you ask. The rest can come later.</span></footer>
+</main></div><script type="module" src="/src/main.ts"></script></body></html>

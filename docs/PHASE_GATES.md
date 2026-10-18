@@ -1,18 +1,17 @@
 # ETTA phase-gate ledger
 
-Status is evidence-bound. A completed PR is not the same as a verified product outcome.
-
-| Phase | Status at authored S001 | Evidence | Outstanding |
+| Phase | Status after S002 | Evidence | Outstanding |
 |---|---|---|---|
-| P0 Foundation | IMPLEMENTED; VERIFICATION PENDING | Source scaffold, contracts, tests, CI workflow defined in S001 | Run local check, hosted CI, real browser and Vercel smoke |
-| P1 Body | NOT_STARTED | — | Visible independent body and movement acceptance |
-| P2 Home | NOT_STARTED | — | Spatial world, objects and affordances |
-| P3 Mind | NOT_STARTED | — | Provider adapter + constrained model actions |
-| P4 Life | NOT_STARTED | — | Measured autonomous run + persistence decision |
-| P5 Open | UNDEFINED | — | Owner-led discovery after P4 |
+| P0 Foundation | CI_PASS; browser/Vercel unverified | Hosted main Actions run [39108436202](https://github.com/jball348-svg/ETTA/actions/runs/39108436202) on `6ca937308116ba1ca065e8ac6f151002ca4671e3` | Browser walkthrough and deployed visual smoke |
+| P1 BODY | **IMPLEMENTED_PENDING_BROWSER_EVIDENCE** | Seven local physics tests passed; source implements humanoid, input/camera/HUD, world collision | Full S002 hosted verdict, real WebGL and controls walkthrough; touch and Vercel checks |
+| P2 HOME | NOT_STARTED | — | Traversable dwelling and stateful objects |
+| P3 MIND | NOT_STARTED | — | Secure provider endpoint and constrained model actions |
+| P4 LIFE | NOT_STARTED | — | Bounded measured autonomy, memory and persistence |
+| P5 OPEN | UNDEFINED | — | Future owner direction |
 
-**Do not upgrade these statuses from expectation alone.** Next sessions must reference exact run URLs/logs or direct observation before marking PASS.
+**P1 is NOT PASS.** A rendered browser walkthrough and actual manual input acceptance cannot be inferred from source, physics unit tests or a green Vite build.
 
 ## Session history
 
-- **S001 — Bootstrap:** created governance and starter web project; records under `sessions/S001`. Hosted and visual verification must be independently established.
+- **S001:** governance and empty stage; prior hosted CI passed. Visual acceptance never claimed.
+- **S002:** authored independent manual body, stylised humanoid, test arena, obstacle collision and controls. Seven pure-logic physics checks passed locally. S003 verification is FUTURE / NOT EXECUTED.

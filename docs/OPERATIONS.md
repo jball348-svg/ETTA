@@ -1,32 +1,23 @@
-# Local operation and Vercel deployment
+# Run and deploy ETTA (after S002)
 
-## Local (S001)
-
-Node 22.12+.
+Requires Node.js 22.12+ and npm:
 
 ```bash
-npm install
+npm ci
 npm run check
 npm run dev
 ```
 
-The browser should show a dark 3D orientation grid and roadmap labels. No Etta body or model call should appear yet. If WebGL is blocked the UI must explain that rendering failed.
+Click the stage to focus; **W/A/S/D** or arrows walk, **Shift** runs, pointer drag orbits, mouse wheel zooms, **R** resets, **F1** toggles developer HUD. A visible reset and diagnostics button are also provided. On touch-screen layouts use the direction pad and RUN, with scene dragging for camera. HUD reports actual coordinates, heading, movement state, velocity, grounded flag and approximate FPS. Releasing keys or losing keyboard focus stops movement.
 
-## Vercel (not yet deployed)
+**Acceptance warning:** S002 unit tests are not a real browser test. S003 must inspect rendering, controls and touch to upgrade P1 gate; Vercel has not been independently checked.
 
-1. Import `jball348-svg/ETTA` on Vercel using the **Vite** framework.
-2. Production build: `npm run build`. Output: `dist`.
-3. In S001 there are **no required environment variables**.
-4. Deploy, then actually open the resulting URL in a browser and inspect developer console/3D rendering. Record this as separate `DEPLOYED_VERIFIED` evidence, not as CI pass.
+## Vercel static deployment
 
-## Future Gemma integration (P3 only)
+Import `jball348-svg/ETTA` as Vite; build `npm run build`, output `dist`. There is no S002 backend and **no API key needed**. Only claim deployment verification after actually opening the deployed URL in a browser and testing the stage.
 
-`.env.example` is a **future configuration contract**, not active code. Use `GEMINI_API_KEY` and `GEMMA_MODEL` solely from server-side functions and Vercel environment settings; do not prefix secrets with `VITE_`, embed keys in the browser or check in real values. Add provider-call budgets, throttling, authentication, strict JSON, failure logging, and fallback origin before public use.
+## P3 Gemma (not yet implemented)
 
-## Costs and uptime
+Only future server functions may read `GEMINI_API_KEY` and `GEMMA_MODEL`; do not commit them, prefix them `VITE_` or include in client code. Add authentication, rate limits, quotas, timeouts, strict legal actions and decision provenance before exposing inference.
 
-A static site on Vercel doesn't run the virtual world when no browser is open. Persistent world time and memory require another architecture and explicit provisioning decision. Hosted Gemma access is subject to provider limits; never assume free unlimited usage.
-
-## Security
-
-`.env`, `.env.local`, `.env.*.local`, `dist`, `node_modules` are gitignored. Never paste API keys into commits, issues, screenshots or test fixtures.
+No home, cloud model, autonomous worker or persistent memory exists yet.

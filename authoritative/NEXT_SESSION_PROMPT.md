@@ -1,50 +1,29 @@
-# ETTA S002 — GIVE ETTA A BODY (FUTURE / NOT EXECUTED)
+# ETTA S003 — VERIFY ETTA'S BODY IN A REAL BROWSER (FUTURE / NOT EXECUTED)
 
-**This is a complete standalone session prompt.** Run only when separately invoked by owner (including "run next session" when ETTA is clear). S002 is **not executed** by the S001 bootstrap.
+**COMPLETE STANDALONE SESSION PROMPT.** S003 is installed by S002 and is FUTURE / NOT EXECUTED. The owner's next separate "run next session" invocation authorises execution of S003 **alone**. Do not execute S004 on the same invocation.
 
-## Entry and constraints
+## Preflight and boundaries
 
-Repository: `jball348-svg/ETTA`, default branch `main`. Read live default-branch SHA, `AGENTS.md`, `PROJECT_CHARTER.md`, `ROADMAP.md`, `authoritative/STATE.json`, `docs/PHASE_GATES.md`, `docs/ARCHITECTURE.md`, and `sessions/S001/*`.
+Repository: `jball348-svg/ETTA`; branch `main`. Reread current main SHA, `AGENTS.md`, `PROJECT_CHARTER.md`, `ROADMAP.md`, `authoritative/STATE.json`, `docs/QUALITY_STANDARD.md`, `docs/PHASE_GATES.md`, `docs/ARCHITECTURE.md`, and every artifact in `sessions/S002`.
 
-- Execute only one numbered session: **S002**.
-- Primary phase: **P1 BODY**. Do **not** implement P2 home, P3 LLM, or P4 autonomy in S002.
-- Existing `jball348-svg/aStar` is a useful reference; do not copy its 337k-character main loop or unstable inference routes.
-- The browser experience must continue to build for Vercel with no API key.
+Remain in P1 BODY until real accepted evidence justifies transition. **Do not implement P2 HOME, P3 inference or P4 autonomy** while P1 browser acceptance is outstanding. Keep source secrets out of Vite, keep MANUAL / DEV explicit and preserve world-owned collision.
 
 ## Mission
 
-**Give Etta a body.** Replace the empty stage marker with a distinct embodied 3D character in a minimal test arena, with verified transform and movement separate from visuals.
+**Validate Etta's body and all developer movement controls in a real browser, fix any observed issues, and accept or honestly defer the P1 gate.** A passing build alone does not prove the rendered 3D character is visible or playable.
 
-## Required engineering work
+## Priority steps
 
-1. Build a small explicit character-domain state: position, orientation, velocity, collision dimensions, grounded status, and action state. Prefer a physics-light deterministic implementation before any engine dependency explosion.
-2. Create an intentionally simple but recognisable Etta humanoid (head, torso, limbs, scale and facing direction). Appearance may be stylised; no new external assets required. Distinguish Etta visually from the origin marker.
-3. Provide **developer-controlled, playable third-person avatar movement** (not an animation demo). Default to **MANUAL / DEV MODE**: Etta does not decide or move autonomously in S002. Implement camera-relative locomotion, a follow/orbit camera, smooth timestep-independent movement, proper key-release/blur handling, no falling through ground, bounded travel and collisions against at least one simple obstacle.
-   - **W / A / S / D** and **arrow keys**: walk Etta around the arena relative to camera orientation, with visible facing/turning.
-   - **Hold Shift**: temporarily run faster, returning to walk speed when released.
-   - **Mouse drag**: orbit the third-person camera; **mouse wheel**: sensible bounded zoom. Character movement and camera orbit must be distinguishable.
-   - **R**: reset Etta's position, orientation, motion and camera to a known spawn state.
-   - **F1** (or an accessible on-screen toggle): show/hide the developer HUD. Keep an always-discoverable control legend in the UI.
-   - **Optional Space**: jump only if grounded jumping and landing can be implemented and tested correctly; don't add fake jumping.
-   - **Touch screens**: if feasible in the session, provide a simple on-screen directional pad/joystick and camera drag so the Vercel preview is explorable on phones; document clearly if touch controls are deferred.
-   - Input must not stick on key release, window blur, focus changes or mode changes; block browser scrolling for mapped arrows only while the game has appropriate focus.
-4. Add an unobtrusive on-screen state/debug readout showing actual coordinates, orientation, movement state and frame performance. Show keyboard instructions and a clear reset.
-5. Separate scene, simulation, input and UI modules; avoid an all-in-one file.
-6. Generate/commit npm lockfile and switch CI to `npm ci` once verified. Add unit tests for deterministic movement and boundaries, and an automated browser smoke test if executable.
-7. Inspect local/hosted build, and if available run a real browser smoke test; explicitly record absent evidence, don't claim a rendering success from `tsc` alone.
+1. From clean checkout and committed npm lockfile run `npm ci`, `npm run check`, `npm run build` and preview site. Record exact Node version and command outputs.
+2. Open real Chromium (or another modern WebGL-capable browser), observe visible humanoid Etta, arena, box, follow camera and HUD. Capture screenshot or reproducible direct observation. Check console.
+3. Exercise W/A/S/D and arrows after clicking scene, Shift run, diagonal normalisation, key-up stopping, stage blur/window blur/visibility release. Confirm camera-relative walking after dragging to orbit; test bounded wheel zoom and distinct camera-versus-body movement.
+4. Exercise R reset (body, orientation, velocity, camera) and F1/on-screen diagnostics toggle; test exact body x/z changes while camera orbits. Verify box and arena walls cannot be crossed.
+5. If possible test touch D-pad, held RUN simultaneous with direction and one-finger orbit on a real device or browser emulation. If unavailable label NOT_RUN; do not silently claim mobile pass.
+6. Test visible WebGL failure fallback, absence of browser-exposed API keys, no provider calls or decisions, and no unexpected network dependencies.
+7. If a verifiable Vercel preview URL exists, visit and test it independently; do not infer deployment from repository config or CI.
+8. Add executable browser regression smoke tests (e.g. Playwright/Chromium) if feasible. Prefer recorded observations and bounded robust tests to mock demonstrations.
+9. Record hosted Actions verdict for exact branch/head SHA and review any bug fixes. P1 is PASS only if all mandatory real-browser acceptance evidence exists. Otherwise keep P1 in progress and plan S004 to close the exact remaining gap.
 
-## Acceptance tests and gate
+## Closeout
 
-- From a clean checkout, install reproducibly, `npm run check` succeeds, and Vite production build completes.
-- Etta is visible as a body; **manual W/A/S/D or arrow movement, Shift running, mouse-orbit camera, wheel zoom, R reset and F1/on-screen developer HUD** work as documented in a real browser **if browser testing is available**. The initial mode is explicitly MANUAL / DEV: no autonomous control or model inference.
-- Test or explicitly report missing evidence for key-up, blur/focus safety, camera-relative direction, obstacle collision, run/walk speed changes, reset and camera bounds; document any deferred touch controls.
-- Character cannot cross a tested obstacle, never teleports between frames, does not depend on model inference, and is not confused with camera motion.
-- Clear error message instead of a crash if WebGL isn't available.
-- Document what is tested in CI, what is manually observed and what remains unverified.
-- Mark P1 PASS **only** if all stated acceptance evidence exists; otherwise leave in progress and write an S003 prompt to close the exact gap.
-
-## Session artifacts and closeout
-
-Create `sessions/S002/{INPUT,PLAN,VALIDATION,REVIEW,CLOSEOUT}.md`; update `authoritative/STATE.json`, roadmap statuses if helpful, and phase/decision ledgers. Install complete `authoritative/NEXT_SESSION_PROMPT.md` for **S003 FUTURE / NOT EXECUTED**, continuing P1 if not passed or preparing the P2 home phase after a genuine P1 pass.
-
-Use one session branch, one authored commit where practical, an ordinary PR, hosted checks where available, and merge if gates genuinely pass. Verify live main after merge. Explain limitations and include the **entire S003 next-session prompt** in the closing owner-facing response.
+Commit complete `sessions/S003/{INPUT,PLAN,VALIDATION,REVIEW,CLOSEOUT}.md`, update `authoritative/STATE.json`, `docs/PHASE_GATES.md`, `docs/DECISIONS.md` and roadmap as needed. Install entire, standalone `authoritative/NEXT_SESSION_PROMPT.md` for **S004 FUTURE / NOT EXECUTED**: if P1 passes, first small P2 HOME slice; if not, remaining P1 verification. Follow single session branch → PR → hosted checks → merge → independent live-main reread. In owner-facing closeout distinguish verification from assumptions and include the complete S004 prompt. Do not execute S004.
